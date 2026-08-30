@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -12,7 +12,32 @@ const sections = [
   { id: "contact", label: "Contact" },
 ];
 
-const NAV_HEIGHT = 80;
+const NAV_HEIGHT = 120;
+const SCROLL_DURATION = 1200;
+
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+function smoothScrollTo(targetY: number) {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
+
+  function step(currentTime: number) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / SCROLL_DURATION, 1);
+    const eased = easeInOutCubic(progress);
+
+    window.scrollTo(0, startY + distance * eased);
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+}
 
 export function ScrollNav() {
   const [targetIndex, setTargetIndex] = useState(0);
@@ -25,7 +50,6 @@ export function ScrollNav() {
 
       setIsVisible(true);
 
-      // Find which section the trigger point has crossed
       let crossedIdx = -1;
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i].id);
@@ -38,13 +62,11 @@ export function ScrollNav() {
         }
       }
 
-      // Target is the NEXT section after the one we've crossed
       if (crossedIdx === -1) {
         setTargetIndex(0);
       } else if (crossedIdx < sections.length - 1) {
         setTargetIndex(crossedIdx + 1);
       } else {
-        // At last section — target is scroll to top
         setTargetIndex(sections.length);
       }
     };
@@ -54,18 +76,21 @@ export function ScrollNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (targetIndex >= sections.length) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.pushState(null, "", "#");
+      smoothScrollTo(0);
       return;
     }
 
-    const el = document.getElementById(sections[targetIndex].id);
+    const section = sections[targetIndex];
+    const el = document.getElementById(section.id);
     if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 120;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      window.history.pushState(null, "", `#${section.id}`);
+      const y = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+      smoothScrollTo(y);
     }
-  };
+  }, [targetIndex]);
 
   if (!isVisible) return null;
 
