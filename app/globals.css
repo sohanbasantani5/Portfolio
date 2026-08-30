@@ -2,9 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #070707;
-  --foreground: #fafafa;
+@layer base {
+  :root {
+    --background: #f5f5f5;
+    --foreground: #171717;
+    --card: #ffffff;
+    --card-foreground: #171717;
+    --border: #e5e5e5;
+    --muted: #f5f5f5;
+    --muted-foreground: #737373;
+    --accent: #171717;
+    --accent-foreground: #fafafa;
+    --ring: #171717;
+  }
+
+  .dark {
+    --background: #070707;
+    --foreground: #fafafa;
+    --card: #111111;
+    --card-foreground: #fafafa;
+    --border: #1f1f1f;
+    --muted: #1a1a1a;
+    --muted-foreground: #a3a3a3;
+    --accent: #fafafa;
+    --accent-foreground: #070707;
+    --ring: #fafafa;
+  }
 }
 
 * {
@@ -19,19 +42,55 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #070707;
-  color: #fafafa;
+  background-color: var(--background);
+  color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Light mode overrides for all components */
+.light .bg-neutral-950 { background-color: #ffffff; }
+.light .bg-neutral-900 { background-color: #f5f5f5; }
+.light .bg-neutral-800 { background-color: #e5e5e5; }
+.light .border-neutral-800 { border-color: #e5e5e5; }
+.light .border-neutral-700 { border-color: #d4d4d4; }
+.light .text-neutral-300 { color: #171717; }
+.light .text-neutral-400 { color: #404040; }
+.light .text-neutral-500 { color: #525252; }
+.light .text-neutral-600 { color: #737373; }
+.light .text-neutral-700 { color: #a3a3a3; }
+.light .text-white { color: #171717; }
+.light .text-black { color: #fafafa; }
+.light .border-white\/20 { border-color: rgba(0,0,0,0.15); }
+.light .bg-white\/10 { background-color: rgba(0,0,0,0.05); }
+.light .bg-white\/90 { background-color: rgba(255,255,255,0.95); }
+.light .bg-black\/60 { background-color: rgba(0,0,0,0.08); }
+.light .bg-black\/80 { background-color: rgba(0,0,0,0.5); }
+.light .from-black\/40 { --tw-gradient-from: rgba(0,0,0,0.25); }
+.light .to-black\/80 { --tw-gradient-to: rgba(0,0,0,0.6); }
+.light .shadow-xl { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+.light .shadow-lg { box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+.light nav { background-color: rgba(255,255,255,0.85); }
+.light nav .text-white { color: #171717; }
+.light nav .text-neutral-300 { color: #525252; }
+.light footer { background-color: #fafafa; border-color: #e5e5e5; }
+.light footer .text-neutral-500 { color: #737373; }
+.light footer .text-neutral-600 { color: #a3a3a3; }
+.light footer .text-white { color: #171717; }
+.light .placeholder\:text-neutral-700::placeholder { color: #a3a3a3; }
+.light .placeholder\:text-neutral-700::placeholder { color: #a3a3a3; }
+.light select option { background-color: #f5f5f5; color: #171717; }
+.light .group:hover .group-hover\:text-neutral-400 { color: #525252; }
+.light .group:hover .group-hover\:border-neutral-600 { border-color: #a3a3a3; }
 
 ::-webkit-scrollbar {
   width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #070707;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -78,6 +137,13 @@ body {
   background-clip: text;
 }
 
+.light .text-gradient-white {
+  background: linear-gradient(135deg, #171717 0%, #525252 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .hero-gradient {
   background: linear-gradient(
     180deg,
@@ -88,12 +154,32 @@ body {
   );
 }
 
+.light .hero-gradient {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 40%,
+    #f5f5f5 85%,
+    #f5f5f5 100%
+  );
+}
+
 .vid-card-overlay {
   background: linear-gradient(
     0deg,
     #070707 0%,
     rgba(7,7,7,0.6) 40%,
     rgba(7,7,7,0.1) 80%,
+    transparent 100%
+  );
+}
+
+.light .vid-card-overlay {
+  background: linear-gradient(
+    0deg,
+    #ffffff 0%,
+    rgba(255,255,255,0.6) 40%,
+    rgba(255,255,255,0.1) 80%,
     transparent 100%
   );
 }

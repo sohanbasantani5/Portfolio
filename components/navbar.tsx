@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/data";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,13 +19,16 @@ export function Navbar() {
   return (
     <>
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        className="fixed top-0 left-0 right-0 z-50"
         animate={{
-          backgroundColor: scrolled ? "rgba(7,7,7,0.92)" : "rgba(7,7,7,0.5)",
-          backdropFilter: "blur(20px)",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
-          boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.3)" : "0 4px 30px rgba(0,0,0,0.15)",
+          backgroundColor: scrolled ? "rgba(7,7,7,0.92)" : "rgba(7,7,7,0.45)",
+          backdropFilter: "blur(24px)",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+          boxShadow: scrolled
+            ? "0 4px 30px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05) inset"
+            : "0 4px 30px rgba(0,0,0,0.2)",
         }}
+        transition={{ duration: 0.4 }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 lg:h-24">
@@ -37,31 +41,35 @@ export function Navbar() {
               </span>
             </a>
 
-            <div className="hidden md:flex items-center gap-10">
+            <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-body text-neutral-400 hover:text-white transition-colors duration-300 relative group"
+                  className="text-sm font-body text-neutral-300 hover:text-white transition-colors duration-300 relative group"
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
+              <ThemeToggle />
               <a
                 href="#contact"
-                className="ml-4 px-5 py-2.5 bg-white text-black text-sm font-heading rounded-lg hover:bg-neutral-200 transition-colors"
+                className="ml-2 px-5 py-2.5 bg-white text-black text-sm font-heading rounded-lg hover:bg-neutral-200 transition-colors"
               >
                 Hire Me
               </a>
             </div>
 
-            <button
-              className="md:hidden text-white p-2"
-              onClick={() => setMobileOpen(true)}
-            >
-              <Menu className="w-6 h-6" />
-            </button>
+            <div className="md:hidden flex items-center gap-3">
+              <ThemeToggle />
+              <button
+                className="text-white p-2"
+                onClick={() => setMobileOpen(true)}
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>
