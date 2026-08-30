@@ -202,6 +202,23 @@ body {
   background: linear-gradient(0deg, #ffffff 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.08) 80%, transparent 100%) !important;
 }
 
+/* --- Hero overrides (must come after all global overrides) --- */
+.light .hero-subtitle,
+.light .hero-cta-secondary,
+.light .hero-cta-primary,
+.light .hero-badge,
+.light .scroll-indicator .text-neutral-500 {
+  all: unset;
+}
+.light .hero-subtitle { color: #ffffff !important; font-size: 1.125rem; line-height: 1.6; }
+.light .hero-cta-primary { background-color: #c45d3e !important; color: #ffffff !important; display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 700; letter-spacing: -0.04em; transition: all 0.3s; }
+.light .hero-cta-primary:hover { background-color: #a8472b !important; }
+.light .hero-cta-primary .fill-black { fill: #ffffff !important; }
+.light .hero-cta-secondary { border: 1px solid rgba(196,93,62,0.25) !important; color: #ffffff !important; background: rgba(196,93,62,0.04) !important; display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 700; letter-spacing: -0.04em; transition: all 0.3s; }
+.light .hero-cta-secondary:hover { border-color: #c45d3e !important; background-color: rgba(196,93,62,0.1) !important; }
+.light .hero-badge { color: #ffffff !important; background: rgba(255,255,255,0.1) !important; border: 1px solid rgba(255,255,255,0.2) !important; }
+.light .scroll-indicator .text-neutral-500 { color: rgba(255,255,255,0.6) !important; }
+
 /* ================================================
    SHARED
    ================================================ */
