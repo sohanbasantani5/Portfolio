@@ -78,7 +78,18 @@ export function Hero() {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const check = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
   const icons = isDark ? darkIcons : lightIcons;
 
   return (
