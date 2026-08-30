@@ -57,21 +57,21 @@ body {
    ============================ */
 
 .light nav {
-  background: rgba(248,246,243,0.88) !important;
-  backdrop-filter: blur(24px) !important;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04) !important;
+  background: rgba(248,246,243,0.72) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.03) !important;
 }
 .light nav .text-white { color: #1a1612 !important; }
 .light nav .text-neutral-300 { color: #7a6f62 !important; }
-.light nav .bg-white { background-color: #1a1612 !important; }
-.light nav .text-black { color: #f8f6f3 !important; }
-.light nav .bg-black\/70 { background-color: rgba(248,246,243,0.7) !important; }
+.light nav .bg-white { background-color: #c45d3e !important; }
+.light nav .text-black { color: #ffffff !important; }
+.light nav .hover\:bg-neutral-200:hover { background-color: #b3512f !important; }
 
 .light .hero-gradient {
-  background: linear-gradient(180deg, transparent 0%, transparent 30%, #f8f6f3 80%, #f8f6f3 100%) !important;
+  background: linear-gradient(180deg, transparent 0%, transparent 50%, rgba(248,246,243,0.5) 75%, #f8f6f3 95%) !important;
 }
 
-.light .bg-gradient-to-b.from-black\/40 { background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 50%, rgba(248,246,243,0.6) 100%) !important; }
+.light .bg-gradient-to-b.from-black\/40 { background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, transparent 50%, rgba(248,246,243,0.3) 100%) !important; }
 
 .light .text-gradient-white {
   background: linear-gradient(135deg, #1a1612 0%, #c45d3e 100%) !important;
@@ -151,11 +151,12 @@ body {
 .light footer .border-neutral-800 { border-color: #3d352c !important; }
 
 .light .marquee-bar {
-  background: rgba(196,93,62,0.05) !important;
-  border-color: rgba(196,93,62,0.12) !important;
+  background: rgba(248,246,243,0.5) !important;
+  border-color: rgba(196,93,62,0.08) !important;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.02) !important;
 }
-.light .marquee-bar span { color: rgba(196,93,62,0.4) !important; }
-.light .marquee-bar .bg-white\/20 { background-color: rgba(196,93,62,0.2) !important; }
+.light .marquee-bar span { color: rgba(196,93,62,0.3) !important; }
+.light .marquee-bar .bg-white\/20 { background-color: rgba(196,93,62,0.15) !important; }
 
 .light .bg-white\/10.backdrop-blur-sm {
   background: rgba(196,93,62,0.08) !important;
