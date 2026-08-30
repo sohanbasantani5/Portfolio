@@ -48,6 +48,7 @@ body {
 /* ================================================
    DARK MODE (default) — everything uses Tailwind
    ================================================ */
+.dark .hero-subtitle { color: #ffffff !important; }
 .dark .scroll-section-btn {
   background: rgba(255,255,255,0.08);
   border-color: rgba(255,255,255,0.12);
