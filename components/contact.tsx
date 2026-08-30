@@ -33,10 +33,10 @@ export function Contact() {
           <span className="text-xs font-heading text-neutral-500 tracking-[0.3em] uppercase">
             Get In Touch
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mt-4 tracking-tight">
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-tight">
             Let&apos;s Work
             <br />
-            <span className="text-neutral-500">Together</span>
+            <span className="text-neutral-400 dark:text-neutral-500">Together</span>
           </h2>
         </motion.div>
 
@@ -47,26 +47,28 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <p className="text-neutral-400 leading-relaxed mb-10 font-body">
+            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-10 font-body">
               Have a project in mind? I&apos;m always open to discussing new opportunities,
               creative collaborations, podcast productions, and ways to bring your vision to life.
             </p>
 
             <div className="space-y-6 mb-10">
-              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-4 text-white hover:text-neutral-400 transition-colors group">
-                <div className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-neutral-600 transition-colors">
+              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-4 text-foreground hover:text-neutral-500 dark:hover:text-neutral-400 transition-colors group">
+                <div className="w-11 h-11 rounded-xl bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 flex items-center justify-center group-hover:border-neutral-400 dark:group-hover:border-neutral-600 transition-colors">
                   <Mail className="w-4 h-4" />
                 </div>
                 <span className="font-heading text-sm">{contactInfo.email}</span>
               </a>
-              <div className="flex items-center gap-4 text-white">
-                <div className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center">
-                  <Phone className="w-4 h-4" />
+              {contactInfo.phone && (
+                <div className="flex items-center gap-4 text-foreground">
+                  <div className="w-11 h-11 rounded-xl bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 flex items-center justify-center">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <span className="font-heading text-sm">{contactInfo.phone}</span>
                 </div>
-                <span className="font-heading text-sm">{contactInfo.phone}</span>
-              </div>
-              <div className="flex items-center gap-4 text-white">
-                <div className="w-11 h-11 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center">
+              )}
+              <div className="flex items-center gap-4 text-foreground">
+                <div className="w-11 h-11 rounded-xl bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 flex items-center justify-center">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <span className="font-heading text-sm">{contactInfo.location}</span>
@@ -78,7 +80,7 @@ export function Contact() {
                 <a
                   key={s.platform}
                   href={s.url}
-                  className="px-4 py-2.5 bg-neutral-900 border border-neutral-800 rounded-lg text-xs font-heading text-neutral-400 hover:text-white hover:border-neutral-600 transition-all flex items-center gap-1.5"
+                  className="px-4 py-2.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-lg text-xs font-heading text-neutral-600 dark:text-neutral-400 hover:text-foreground hover:border-neutral-400 dark:hover:border-neutral-600 transition-all flex items-center gap-1.5"
                 >
                   {s.platform}
                   <ArrowUpRight className="w-3 h-3" />
@@ -102,7 +104,7 @@ export function Contact() {
                   type="text"
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full px-4 py-3.5 bg-neutral-900 border border-neutral-800 rounded-xl text-white text-sm font-body outline-none focus:border-neutral-600 transition-colors placeholder:text-neutral-700"
+                  className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
                   placeholder="Your name"
                   required
                 />
@@ -113,7 +115,7 @@ export function Contact() {
                   type="email"
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full px-4 py-3.5 bg-neutral-900 border border-neutral-800 rounded-xl text-white text-sm font-body outline-none focus:border-neutral-600 transition-colors placeholder:text-neutral-700"
+                  className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
                   placeholder="your@email.com"
                   required
                 />
@@ -124,15 +126,16 @@ export function Contact() {
               <select
                 value={formState.project}
                 onChange={(e) => setFormState({ ...formState, project: e.target.value })}
-                className="w-full px-4 py-3.5 bg-neutral-900 border border-neutral-800 rounded-xl text-white text-sm font-body outline-none focus:border-neutral-600 transition-colors appearance-none"
+                className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors appearance-none"
               >
-                <option value="" className="bg-neutral-900">Select a project type</option>
-                <option value="brand" className="bg-neutral-900">Brand Film</option>
-                <option value="social" className="bg-neutral-900">Social Media Content</option>
-                <option value="doc" className="bg-neutral-900">Documentary</option>
-                <option value="motion" className="bg-neutral-900">Motion Design</option>
-                <option value="commercial" className="bg-neutral-900">Commercial / Ad</option>
-                <option value="other" className="bg-neutral-900">Other</option>
+                <option value="" className="bg-neutral-100 dark:bg-neutral-900">Select a project type</option>
+                <option value="brand" className="bg-neutral-100 dark:bg-neutral-900">Brand Film</option>
+                <option value="social" className="bg-neutral-100 dark:bg-neutral-900">Social Media Content</option>
+                <option value="doc" className="bg-neutral-100 dark:bg-neutral-900">Documentary</option>
+                <option value="motion" className="bg-neutral-100 dark:bg-neutral-900">Motion Design</option>
+                <option value="podcast" className="bg-neutral-100 dark:bg-neutral-900">Podcast Production</option>
+                <option value="commercial" className="bg-neutral-100 dark:bg-neutral-900">Commercial / Ad</option>
+                <option value="other" className="bg-neutral-100 dark:bg-neutral-900">Other</option>
               </select>
             </div>
             <div>
@@ -141,14 +144,14 @@ export function Contact() {
                 value={formState.message}
                 onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                 rows={5}
-                className="w-full px-4 py-3.5 bg-neutral-900 border border-neutral-800 rounded-xl text-white text-sm font-body outline-none focus:border-neutral-600 transition-colors resize-none placeholder:text-neutral-700"
+                className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors resize-none placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
                 placeholder="Tell me about your project..."
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full py-4 bg-white text-black font-heading text-sm rounded-xl hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-4 bg-foreground dark:bg-white text-background dark:text-black font-heading text-sm rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
             >
               {submitted ? (
                 "Message Sent!"

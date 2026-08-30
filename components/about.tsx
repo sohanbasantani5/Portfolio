@@ -17,12 +17,12 @@ export function About() {
             <span className="text-xs font-heading text-neutral-500 tracking-[0.3em] uppercase">
               About Me
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl text-white mt-4 mb-8 tracking-tight leading-tight">
+            <h2 className="font-heading text-4xl md:text-5xl text-foreground mt-4 mb-8 tracking-tight leading-tight">
               Crafting Visual Stories
               <br />
-              <span className="text-neutral-500">Since 2019</span>
+              <span className="text-neutral-400 dark:text-neutral-500">Since 2019</span>
             </h2>
-            <div className="space-y-5 text-neutral-400 leading-relaxed font-body">
+            <div className="space-y-5 text-neutral-600 dark:text-neutral-400 leading-relaxed font-body">
               {aboutMe.bio.split("\n\n").map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
@@ -30,11 +30,11 @@ export function About() {
             <div className="mt-10 flex flex-wrap gap-8">
               <div>
                 <span className="text-xs font-heading text-neutral-500 tracking-widest uppercase">Based In</span>
-                <p className="text-white mt-1 font-heading">{aboutMe.location}</p>
+                <p className="text-foreground mt-1 font-heading">{aboutMe.location}</p>
               </div>
               <div>
                 <span className="text-xs font-heading text-neutral-500 tracking-widest uppercase">Role</span>
-                <p className="text-white mt-1 font-heading">{aboutMe.role}</p>
+                <p className="text-foreground mt-1 font-heading">{aboutMe.role}</p>
               </div>
             </div>
           </motion.div>
@@ -45,7 +45,7 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <h3 className="font-heading text-sm text-neutral-400 tracking-widest uppercase mb-8">
+            <h3 className="font-heading text-sm text-neutral-500 tracking-widest uppercase mb-8">
               Software & Skills
             </h3>
             <div className="space-y-5">
@@ -58,12 +58,12 @@ export function About() {
                   transition={{ duration: 0.5, delay: i * 0.05 }}
                 >
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm text-white font-heading">{skill.name}</span>
-                    <span className="text-xs text-neutral-600 font-heading">{skill.level}%</span>
+                    <span className="text-sm text-foreground font-heading">{skill.name}</span>
+                    <span className="text-xs text-neutral-400 dark:text-neutral-600 font-heading">{skill.level}%</span>
                   </div>
-                  <div className="w-full h-1 bg-neutral-800 rounded-full overflow-hidden">
+                  <div className="w-full h-1 bg-neutral-200 dark:bg-neutral-800 rounded-full overflow-hidden">
                     <motion.div
-                      className="h-full bg-white rounded-full"
+                      className="h-full bg-foreground dark:bg-white rounded-full"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}

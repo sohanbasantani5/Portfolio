@@ -18,7 +18,7 @@ export function Testimonials() {
           <span className="text-xs font-heading text-neutral-500 tracking-[0.3em] uppercase">
             Kind Words
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mt-4 tracking-tight">
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-tight">
             Client Reviews
           </h2>
         </motion.div>
@@ -27,14 +27,14 @@ export function Testimonials() {
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              className="p-8 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-all duration-500"
+              className="p-8 rounded-xl bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-500"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <Quote className="w-8 h-8 text-neutral-700 mb-6" />
-              <p className="text-neutral-300 leading-relaxed text-sm mb-8 font-body">
+              <Quote className="w-8 h-8 text-neutral-300 dark:text-neutral-700 mb-6" />
+              <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-sm mb-8 font-body">
                 &ldquo;{t.text}&rdquo;
               </p>
               <div className="flex items-center gap-3">
@@ -44,7 +44,7 @@ export function Testimonials() {
                   className="w-10 h-10 rounded-full object-cover"
                 />
                 <div>
-                  <p className="text-white text-sm font-heading">{t.name}</p>
+                  <p className="text-foreground text-sm font-heading">{t.name}</p>
                   <p className="text-neutral-500 text-xs font-heading">{t.role}</p>
                 </div>
               </div>

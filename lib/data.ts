@@ -136,6 +136,8 @@ export const skills = [
   { name: "Illustrator", level: 75 },
   { name: "Final Cut Pro", level: 85 },
   { name: "Audition / Sound", level: 88 },
+  { name: "Podcast Editing", level: 92 },
+  { name: "Audio Mastering", level: 86 },
 ];
 
 export const services = [
@@ -150,6 +152,12 @@ export const services = [
     title: "Motion Graphics",
     description: "Kinetic typography, animated titles, visual effects, and compositing to bring static assets to life.",
     features: ["Kinetic Typography", "Title Sequences", "VFX", "Compositing"],
+  },
+  {
+    icon: "Podcast",
+    title: "Podcast Production",
+    description: "Full-cycle podcast production — from recording and editing to mixing, mastering, and publishing across all platforms.",
+    features: ["Recording Setup", "Editing & Mixing", "Mastering", "Publishing"],
   },
   {
     icon: "ColorGrade",
@@ -169,7 +177,7 @@ export const aboutMe = {
   name: "Sohan Basantani",
   role: "Video Editor • Podcast Producer • Creative Artist",
   location: "India",
-  bio: "I craft visually compelling narratives that captivate audiences. With over 6 years of experience in post-production, I specialize in transforming raw footage into polished, emotionally resonant content.\n\nMy work spans cinematic brand films, social media campaigns, documentary storytelling, podcast production, and high-end motion design. Every project receives the same obsessive attention to detail — from the first cut to final delivery.\n\nI believe great editing is invisible. The best edits are the ones audiences never notice — they simply feel the story.",
+  bio: "I craft visually compelling narratives that captivate audiences. With over 6 years of experience in post-production, I specialize in transforming raw footage into polished, emotionally resonant content.\n\nMy work spans cinematic brand films, social media campaigns, documentary storytelling, podcast production, and high-end motion design. From shooting podcast episodes to grading feature films — every project receives the same obsessive attention to detail.\n\nI believe great editing is invisible. The best edits are the ones audiences never notice — they simply feel the story.",
   stats: [
     { label: "Years of Experience", value: "6+" },
     { label: "Projects Completed", value: "200+" },

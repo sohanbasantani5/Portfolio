@@ -1,11 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useMotionValue, useTransform, useInView, animate } from "framer-motion";
 import { aboutMe } from "@/lib/data";
+
+function AnimatedNumber({ value }: { value: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const num = parseInt(value.replace(/[^0-9]/g, ""));
+  const suffix = value.replace(/[0-9]/g, "");
+  const motionVal = useMotionValue(0);
+  const rounded = useTransform(motionVal, (v) => `${Math.round(v)}${suffix}`);
+
+  useEffect(() => {
+    if (isInView) {
+      animate(motionVal, num, { duration: 2, ease: "easeOut" });
+    }
+  }, [isInView, motionVal, num]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+}
 
 export function Stats() {
   return (
-    <section className="py-20 lg:py-28 border-y border-neutral-800">
+    <section className="py-20 lg:py-28 border-y border-neutral-200 dark:border-neutral-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {aboutMe.stats.map((stat, i) => (
@@ -17,8 +35,8 @@ export function Stats() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <div className="font-heading text-3xl md:text-4xl lg:text-5xl text-white tracking-tight mb-2">
-                {stat.value}
+              <div className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground tracking-tight mb-2">
+                <AnimatedNumber value={stat.value} />
               </div>
               <div className="text-xs text-neutral-500 font-heading tracking-widest uppercase">
                 {stat.label}

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { categories, projects } from "@/lib/data";
 import { ProjectCard } from "./project-card";
 import { ProjectModal } from "./project-modal";
-import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function WorkSection() {
@@ -29,7 +28,7 @@ export function WorkSection() {
           <span className="text-xs font-heading text-neutral-500 tracking-[0.3em] uppercase">
             Selected Work
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mt-4 tracking-tight">
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-tight">
             The Portfolio
           </h2>
         </motion.div>
@@ -48,8 +47,8 @@ export function WorkSection() {
               className={cn(
                 "px-5 py-2.5 text-sm font-heading rounded-lg transition-all duration-300",
                 activeCategory === cat.id
-                  ? "bg-white text-black"
-                  : "bg-neutral-900 text-neutral-400 hover:text-white hover:bg-neutral-800 border border-neutral-800"
+                  ? "bg-foreground text-background dark:bg-white dark:text-black"
+                  : "bg-neutral-200 dark:bg-neutral-900 text-neutral-500 hover:text-foreground hover:bg-neutral-300 dark:hover:bg-neutral-800 border border-neutral-300 dark:border-neutral-800"
               )}
             >
               {cat.label}

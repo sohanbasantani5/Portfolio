@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Play, Clock, Tag } from "lucide-react";
+import { Play, Clock } from "lucide-react";
 import { Project } from "@/lib/data";
 
 interface Props {
@@ -10,11 +11,35 @@ interface Props {
 }
 
 export function ProjectCard({ project, onClick }: Props) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    setRotateX(((y - centerY) / centerY) * -5);
+    setRotateY(((x - centerX) / centerX) * 5);
+  };
+
+  const handleMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
+  };
+
   return (
     <motion.div
-      className="group relative overflow-hidden rounded-xl cursor-pointer bg-neutral-950 border border-neutral-800"
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3 }}
+      ref={cardRef}
+      className="group relative overflow-hidden rounded-xl cursor-pointer bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800"
+      style={{ rotateX, rotateY, perspective: 800, transformStyle: "preserve-3d" }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      whileHover={{ scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       onClick={onClick}
     >
       <div className="relative aspect-video overflow-hidden">
@@ -40,7 +65,7 @@ export function ProjectCard({ project, onClick }: Props) {
         </div>
       </div>
       <div className="p-6">
-        <h3 className="font-heading text-lg text-white mb-2 group-hover:text-neutral-400 transition-colors">
+        <h3 className="font-heading text-lg text-foreground mb-2 group-hover:text-neutral-500 dark:group-hover:text-neutral-400 transition-colors">
           {project.title}
         </h3>
         <p className="text-neutral-500 text-sm leading-relaxed line-clamp-2">
@@ -48,7 +73,7 @@ export function ProjectCard({ project, onClick }: Props) {
         </p>
         <div className="flex flex-wrap gap-1.5 mt-4">
           {project.tags.slice(0, 2).map((tag) => (
-            <span key={tag} className="text-xs text-neutral-500 bg-neutral-900 px-2 py-0.5 rounded font-heading">
+            <span key={tag} className="text-xs text-neutral-500 bg-neutral-200 dark:bg-neutral-900 px-2 py-0.5 rounded font-heading">
               {tag}
             </span>
           ))}
