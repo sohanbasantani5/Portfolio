@@ -2,18 +2,28 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTheme } from "next-themes";
 import { Play, Film, Clapperboard, Mic, Camera, Scissors, Paintbrush } from "lucide-react";
 import Link from "next/link";
 
 const roles = ["Video Editor", "Podcast Producer", "Artist"];
 
-const floatingIcons = [
-  { Icon: Film, x: "10%", y: "20%", size: 32, delay: 0, duration: 5.5, rotate: 15 },
-  { Icon: Clapperboard, x: "85%", y: "15%", size: 28, delay: 0.5, duration: 6.2, rotate: -10 },
-  { Icon: Mic, x: "8%", y: "70%", size: 30, delay: 1, duration: 5.8, rotate: 20 },
-  { Icon: Camera, x: "88%", y: "65%", size: 26, delay: 1.5, duration: 6.5, rotate: -15 },
-  { Icon: Scissors, x: "20%", y: "85%", size: 24, delay: 0.8, duration: 5.2, rotate: 10 },
-  { Icon: Paintbrush, x: "78%", y: "82%", size: 28, delay: 1.2, duration: 6.0, rotate: -20 },
+const darkIcons = [
+  { Icon: Film, x: "10%", y: "20%", size: 32, delay: 0, duration: 5.5, rotate: 15, opacity: 0.07 },
+  { Icon: Clapperboard, x: "85%", y: "15%", size: 28, delay: 0.5, duration: 6.2, rotate: -10, opacity: 0.07 },
+  { Icon: Mic, x: "8%", y: "70%", size: 30, delay: 1, duration: 5.8, rotate: 20, opacity: 0.07 },
+  { Icon: Camera, x: "88%", y: "65%", size: 26, delay: 1.5, duration: 6.5, rotate: -15, opacity: 0.07 },
+  { Icon: Scissors, x: "20%", y: "85%", size: 24, delay: 0.8, duration: 5.2, rotate: 10, opacity: 0.07 },
+  { Icon: Paintbrush, x: "78%", y: "82%", size: 28, delay: 1.2, duration: 6.0, rotate: -20, opacity: 0.07 },
+];
+
+const lightIcons = [
+  { Icon: Film, x: "10%", y: "20%", size: 40, delay: 0, duration: 5.5, rotate: 15, opacity: 0.15 },
+  { Icon: Clapperboard, x: "85%", y: "15%", size: 36, delay: 0.5, duration: 6.2, rotate: -10, opacity: 0.15 },
+  { Icon: Mic, x: "8%", y: "70%", size: 38, delay: 1, duration: 5.8, rotate: 20, opacity: 0.15 },
+  { Icon: Camera, x: "88%", y: "65%", size: 34, delay: 1.5, duration: 6.5, rotate: -15, opacity: 0.15 },
+  { Icon: Scissors, x: "20%", y: "85%", size: 30, delay: 0.8, duration: 5.2, rotate: 10, opacity: 0.15 },
+  { Icon: Paintbrush, x: "78%", y: "82%", size: 36, delay: 1.2, duration: 6.0, rotate: -20, opacity: 0.15 },
 ];
 
 const marqueeItems = [
@@ -59,7 +69,7 @@ function TypingRole() {
   return (
     <span>
       {displayText}
-      <span className="inline-block w-[3px] h-[0.9em] bg-white ml-1 align-middle animate-pulse" />
+      <span className="inline-block w-[3px] h-[0.9em] bg-current ml-1 align-middle animate-pulse" />
     </span>
   );
 }
@@ -67,6 +77,9 @@ function TypingRole() {
 export function Hero() {
   const ref = useRef(null);
   const isInView = useInView(ref);
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+  const icons = isDark ? darkIcons : lightIcons;
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -77,20 +90,20 @@ export function Hero() {
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
         <img
-          src="https://picsum.photos/seed/hero-cinematic/1920/1080.jpg"
-          alt="Cinematic background"
-          className="w-full h-full object-cover"
+          src={isDark ? "https://picsum.photos/seed/hero-cinematic/1920/1080.jpg" : "https://picsum.photos/seed/light-office-warm/1920/1080.jpg"}
+          alt="Background"
+          className="w-full h-full object-cover transition-opacity duration-700"
         />
         <div className="hero-gradient absolute inset-0" />
       </motion.div>
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
 
-      {floatingIcons.map(({ Icon, x, y, size, delay, duration, rotate }, i) => (
+      {icons.map(({ Icon, x, y, size, delay, duration, rotate, opacity }, i) => (
         <motion.div
           key={i}
-          className="absolute text-white/[0.07] pointer-events-none"
-          style={{ left: x, top: y }}
+          className="absolute pointer-events-none floating-icon"
+          style={{ left: x, top: y, color: isDark ? `rgba(255,255,255,${opacity})` : `rgba(196,93,62,${opacity})` }}
           initial={{ opacity: 0, scale: 0.5, rotate: 0 }}
           animate={isInView ? {
             opacity: 1,
@@ -172,7 +185,7 @@ export function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 scroll-indicator"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
@@ -185,7 +198,7 @@ export function Hero() {
         />
       </motion.div>
 
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-b border-white/5 bg-black/30 backdrop-blur-sm">
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-white/5 bg-black/30 backdrop-blur-sm marquee-bar">
         <div className="flex whitespace-nowrap py-3" style={{ animation: "marquee 25s linear infinite" }}>
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="text-xs font-heading text-white/30 tracking-[0.3em] uppercase mx-8 flex items-center gap-3">

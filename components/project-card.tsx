@@ -73,7 +73,7 @@ export function ProjectCard({ project, onClick }: Props) {
         </p>
         <div className="flex flex-wrap gap-1.5 mt-4">
           {project.tags.slice(0, 2).map((tag) => (
-            <span key={tag} className="text-xs text-neutral-500 bg-neutral-200 dark:bg-neutral-900 px-2 py-0.5 rounded font-heading">
+            <span key={tag} className="text-xs text-neutral-500 bg-neutral-200 dark:bg-neutral-900 px-2 py-0.5 rounded font-heading border border-neutral-300 dark:border-transparent">
               {tag}
             </span>
           ))}

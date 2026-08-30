@@ -14,7 +14,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32 border-y border-neutral-200 dark:border-neutral-800">
+    <section id="services" className="py-24 lg:py-32 border-y border-neutral-200 dark:border-neutral-800 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           className="mb-16"
@@ -26,7 +26,7 @@ export function Services() {
           <span className="text-xs font-heading text-neutral-500 tracking-[0.3em] uppercase">
             What I Do
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-tight">
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-tight transition-colors duration-500">
             Services
           </h2>
         </motion.div>
@@ -35,17 +35,17 @@ export function Services() {
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              className="group p-8 lg:p-10 rounded-xl bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-500"
+              className="group p-8 lg:p-10 rounded-xl bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:border-accent/30 dark:hover:border-neutral-700 transition-all duration-500"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -4 }}
             >
-              <div className="w-12 h-12 rounded-xl bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 flex items-center justify-center text-foreground mb-6 group-hover:bg-foreground group-hover:text-background transition-all duration-500">
+              <div className="w-12 h-12 rounded-xl bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 flex items-center justify-center text-foreground dark:text-white mb-6 group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-500">
                 {iconMap[service.icon]}
               </div>
-              <h3 className="font-heading text-xl text-foreground mb-3">{service.title}</h3>
+              <h3 className="font-heading text-xl text-foreground dark:text-white mb-3 transition-colors duration-500">{service.title}</h3>
               <p className="text-neutral-500 leading-relaxed text-sm mb-6 font-body">
                 {service.description}
               </p>
@@ -53,7 +53,7 @@ export function Services() {
                 {service.features.map((f) => (
                   <span
                     key={f}
-                    className="px-3 py-1 text-xs font-heading text-neutral-500 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-md"
+                    className="px-3 py-1 text-xs font-heading text-neutral-500 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-md transition-colors duration-500"
                   >
                     {f}
                   </span>

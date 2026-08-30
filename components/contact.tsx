@@ -104,7 +104,7 @@ export function Contact() {
                   type="text"
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
+                  className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
                   placeholder="Your name"
                   required
                 />
@@ -115,7 +115,7 @@ export function Contact() {
                   type="email"
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
+                  className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
                   placeholder="your@email.com"
                   required
                 />
@@ -126,7 +126,7 @@ export function Contact() {
               <select
                 value={formState.project}
                 onChange={(e) => setFormState({ ...formState, project: e.target.value })}
-                className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors appearance-none"
+                className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all appearance-none"
               >
                 <option value="" className="bg-neutral-100 dark:bg-neutral-900">Select a project type</option>
                 <option value="brand" className="bg-neutral-100 dark:bg-neutral-900">Brand Film</option>
@@ -144,14 +144,14 @@ export function Contact() {
                 value={formState.message}
                 onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                 rows={5}
-                className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors resize-none placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
+                className="w-full px-4 py-3.5 bg-neutral-200 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-xl text-foreground text-sm font-body outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all resize-none placeholder:text-neutral-400 dark:placeholder:text-neutral-700"
                 placeholder="Tell me about your project..."
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full py-4 bg-foreground dark:bg-white text-background dark:text-black font-heading text-sm rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+              className="w-full py-4 bg-accent text-accent-foreground font-heading text-sm rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
             >
               {submitted ? (
                 "Message Sent!"
