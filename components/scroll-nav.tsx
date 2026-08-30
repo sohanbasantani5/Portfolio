@@ -62,7 +62,8 @@ export function ScrollNav() {
 
     const el = document.getElementById(sections[targetIndex].id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const y = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
