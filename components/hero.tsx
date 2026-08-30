@@ -170,14 +170,14 @@ export function Hero() {
         >
           <Link
             href="#work"
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-heading text-sm rounded-lg hover:bg-neutral-200 transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-heading text-sm rounded-lg hover:bg-neutral-200 transition-all duration-300 hover:shadow-lg hover:shadow-white/10 hero-cta-primary"
           >
             View My Work
             <Play className="w-4 h-4 fill-black group-hover:fill-black transition-colors" />
           </Link>
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 border border-neutral-700 text-white font-heading text-sm rounded-lg hover:border-neutral-500 hover:bg-neutral-900 transition-all duration-300"
+            className="inline-flex items-center gap-3 px-8 py-4 border border-neutral-700 text-white font-heading text-sm rounded-lg hover:border-neutral-500 hover:bg-neutral-900 transition-all duration-300 hero-cta-secondary"
           >
             Get In Touch
           </a>

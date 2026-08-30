@@ -67,6 +67,12 @@ body {
 .light nav .text-black { color: #ffffff !important; }
 .light nav .hover\:bg-neutral-200:hover { background-color: #b3512f !important; }
 
+.light .hero-cta-primary { background-color: #c45d3e !important; color: #ffffff !important; }
+.light .hero-cta-primary:hover { background-color: #b3512f !important; }
+.light .hero-cta-primary .fill-black { fill: #ffffff !important; }
+.light .hero-cta-secondary { border-color: rgba(196,93,62,0.3) !important; color: #1a1612 !important; }
+.light .hero-cta-secondary:hover { border-color: #c45d3e !important; background-color: rgba(196,93,62,0.06) !important; }
+
 .light .hero-gradient {
   background: linear-gradient(180deg, transparent 0%, transparent 50%, rgba(248,246,243,0.5) 75%, #f8f6f3 95%) !important;
 }
