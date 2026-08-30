@@ -90,7 +90,7 @@ export function Hero() {
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
         <img
-          src={isDark ? "https://picsum.photos/seed/hero-cinematic/1920/1080.jpg" : "https://picsum.photos/seed/light-office-warm/1920/1080.jpg"}
+          src={isDark ? "/images/hero-dark.jpg" : "/images/hero-light.jpg"}
           alt="Background"
           className="w-full h-full object-cover transition-opacity duration-700"
         />
