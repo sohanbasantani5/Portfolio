@@ -23,7 +23,7 @@ export function ScrollNav() {
       const scrollY = window.scrollY;
       const triggerY = scrollY + NAV_HEIGHT;
 
-      setIsVisible(scrollY > 300);
+      setIsVisible(true);
 
       // Find which section the trigger point has crossed
       let crossedIdx = -1;
