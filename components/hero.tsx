@@ -127,7 +127,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="inline-block px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-xs font-heading text-white tracking-widest uppercase mb-8">
+          <span className="hero-badge inline-block px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-xs font-heading text-white tracking-widest uppercase mb-8">
             Available for Freelance & Commissions
           </span>
         </motion.div>
@@ -153,7 +153,7 @@ export function Hero() {
         </motion.div>
 
         <motion.p
-          className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-12 font-body"
+          className="hero-subtitle text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-12 font-body"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}

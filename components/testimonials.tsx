@@ -6,7 +6,7 @@ import { Quote } from "lucide-react";
 
 export function Testimonials() {
   return (
-    <section className="py-24 lg:py-32">
+    <section id="testimonials" className="py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           className="mb-16"
