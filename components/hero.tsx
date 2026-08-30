@@ -144,7 +144,7 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
-          className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] tracking-tight mb-4"
+          className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] tracking-tight mb-4 font-extrabold"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
@@ -153,7 +153,7 @@ export function Hero() {
         </motion.h1>
 
         <motion.div
-          className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8 min-h-[1.2em]"
+          className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8 min-h-[1.2em] font-extrabold"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
