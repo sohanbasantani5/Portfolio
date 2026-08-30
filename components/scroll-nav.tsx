@@ -13,7 +13,7 @@ const sections = [
 ];
 
 const NAV_HEIGHT = 120;
-const SCROLL_DURATION = 1200;
+const SCROLL_DURATION = 700;
 
 function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
